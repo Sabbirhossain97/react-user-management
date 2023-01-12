@@ -23,6 +23,19 @@ const Pagination = ({
         className="flex items-cente bg-white px-4 py-3 sm:px-6 w-10/12 mx-auto"
         aria-label="Pagination"
       >
+        <div className="sm:block lg:flex items-center">
+          <p className="text-md text-gray-700">
+            Showing
+            <span className="font-medium text-blue-600">
+              &nbsp;{users.length / totalPage}
+            </span>
+            <span className="">
+              &nbsp;out of&nbsp;
+              <span className="font-medium text-blue-600">{users.length} </span>
+            </span>
+            results
+          </p>
+        </div>
         <div className="flex flex-1 justify-center sm:justify-end mt-[30px]">
           <button
             onClick={() => previousPage()}

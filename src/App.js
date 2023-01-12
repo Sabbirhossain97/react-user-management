@@ -127,7 +127,6 @@ function App() {
   useEffect(() => {
     setTotalPage(Math.ceil(users.length / perPage));
   }, [users]);
-  console.log(users.length);
   return (
     <div className="mt-[100px]">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -227,7 +226,7 @@ function App() {
                                 <div className="flex justify-center">
                                   <a
                                     onClick={() => removeTodo(user.id)}
-                                    className="text-red-700 hover:text-indigo-900"
+                                    className="text-red-700 hover:text-red-800"
                                   >
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
