@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Pagination = ({
   currentPage,
@@ -23,8 +23,10 @@ const Pagination = ({
     }
   }
   //for total items showing in current page
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage - 1, users.length - 1);
+ 
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage - 1, users.length - 1);
+ 
   return (
     <div>
       <nav
@@ -35,7 +37,7 @@ const Pagination = ({
           <p className="text-md text-gray-700">
             Showing
             <span className="font-medium text-blue-600">
-              &nbsp;{endIndex - startIndex + 1}
+              &nbsp;{(endIndex - startIndex) + 1}
             </span>
             <span>
               &nbsp;out of&nbsp;
@@ -56,9 +58,24 @@ const Pagination = ({
             Previous
           </button>
           {paginationArray.map((item) => (
-            <p className="p-2 font-medium text-blue-600 border border-gray-200 rounded-md cursor-pointer mr-2">
-              {item}
-            </p>
+            <div className="h-[4px]">
+              <p
+                onClick={() =>
+                  item > item - 1
+                    ? nextPage()
+                    : item < item + 1
+                    ? previousPage()
+                    : ""
+                }
+                className={`${
+                  currentPage === item
+                    ? "bg-blue-600 text-white px-4 py-2 text-center font-medium rounded-md cursor-pointer mr-2"
+                    : "px-4 py-2 font-medium text-blue-600 border border-gray-200 rounded-md cursor-pointer mr-2 hover:bg-blue-600 hover:text-white"
+                }`}
+              >
+                {item}
+              </p>
+            </div>
           ))}
           <button
             onClick={() => nextPage()}

@@ -133,12 +133,12 @@ function App() {
               A list of all the user's personal information
             </p>
           </div>
-          <div className="flex justify-between">
-            <div className="ml-8">
+          <div className="flex ">
+            <div className="inline ml-4">
               <label className="bold font-medium">Users limit / page :</label>
               <input
                 type="number"
-                className="ring-1 rounded-md border-indigo-600 px-2 py-2 font-medium text-sm w-2/5 ml-2"
+                className="ring-1 rounded-md border-indigo-600 px-2 py-2 font-medium text-sm w-2/12 ml-4"
                 onChange={(e) => limitHandler(e)}
               />
             </div>
@@ -174,37 +174,13 @@ function App() {
                         Country
                       </th>
 
-                      <th
-                        onClick={() => {}}
-                        className="sticky top-0 z-10 border-b border-gray-300  bg-gray-50 bg-opacity-75 px-3 py-3.5 text-sm text-center font-semibold text-gray-900 backdrop-blur backdrop-filter"
-                      >
+                      <th className="sticky top-0 z-10 border-b border-gray-300  bg-gray-50 bg-opacity-75 px-3 py-3.5 text-sm text-center font-semibold text-gray-900 backdrop-blur backdrop-filter">
                         Action
                       </th>
                     </tr>
                   </thead>
                   <TransitionGroup component="tbody" className="bg-white">
-                    {users.length < 1 && (
-                      <tr>
-                        <td className="whitespace-nowrap border-b border-gray-200 pl-4 py-4 text-sm text-center font-medium text-gray-900">
-                          Empty
-                        </td>
-                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 lg:pl-6">
-                          Empty
-                        </td>
-                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden lg:table-cell">
-                          Empty
-                        </td>
-                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden lg:pl-6 sm:table-cell">
-                          Empty
-                        </td>
-                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden sm:table-cell">
-                          Empty
-                        </td>
-                        <td className="relative whitespace-nowrap border-b border-gray-200 py-4 pr-4 pl-3 text-center text-sm font-medium sm:pr-6 lg:pr-8">
-                          N/A
-                        </td>
-                      </tr>
-                    )}
+                   
 
                     {users
                       .filter(
@@ -240,7 +216,7 @@ function App() {
                               <div className="flex justify-center">
                                 <a
                                   onClick={() => removeTodo(user.id)}
-                                  className="text-red-700 hover:text-red-800"
+                                  className="text-red-700 cursor-pointer hover:text-red-800"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +235,7 @@ function App() {
                                   onClick={() => {
                                     editModal(user);
                                   }}
-                                  className="text-indigo-600 hover:text-indigo-900"
+                                  className="text-indigo-600 cursor-pointer hover:text-indigo-900"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
