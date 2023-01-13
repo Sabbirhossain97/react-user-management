@@ -7,6 +7,11 @@ const Pagination = ({
   setCurrentPage,
   users,
 }) => {
+  let paginationArray = [];
+  for (let i = 1; i <= totalPage; i++) {
+    paginationArray.push(i);
+    console.log(paginationArray);
+  }
   function nextPage() {
     if (currentPage !== totalPage) {
       setCurrentPage((e) => e + 1);
@@ -32,31 +37,36 @@ const Pagination = ({
             <span className="font-medium text-blue-600">
               &nbsp;{endIndex - startIndex + 1}
             </span>
-            <span className="">
+            <span>
               &nbsp;out of&nbsp;
               <span className="font-medium text-blue-600">{users.length} </span>
             </span>
             results
           </p>
         </div>
-        <div className="flex flex-1 justify-center sm:justify-end mt-[30px]">
+        <div className="flex flex-1 justify-center sm:justify-end mt-[20px] h-[40px]">
           <button
             onClick={() => previousPage()}
             className={`${
               currentPage === 1
                 ? "bg-gray-300 cursor-not-allowed text-gray-400"
                 : ""
-            } relativeinline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
+            } relativeinline-flex items-center rounded-md border border-gray-300 bg-white mr-4 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
           >
             Previous
           </button>
+          {paginationArray.map((item) => (
+            <p className="p-2 font-medium text-blue-600 border border-gray-200 rounded-md cursor-pointer mr-2">
+              {item}
+            </p>
+          ))}
           <button
             onClick={() => nextPage()}
             className={`${
               currentPage === totalPage
                 ? "bg-gray-300 cursor-not-allowed text-gray-400"
                 : ""
-            } relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
+            } relative ml-2 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
           >
             Next
           </button>

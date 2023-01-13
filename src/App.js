@@ -10,18 +10,18 @@ function App() {
     id: null,
     firstName: "",
     lastName: "",
-    title: "",
+    country: "",
     email: "",
-    role: "",
+    phone: "",
   });
   const [users, setUser] = useState([
     {
       id: 1,
       firstName: "John",
       lastName: "Doe",
-      title: "Unknown",
+      country: "Unknown",
       email: "johndoe123@gmail.com",
-      role: "N/A",
+      phone: "N/A",
     },
   ]);
 
@@ -34,22 +34,22 @@ function App() {
       id: null,
       firstName: "",
       lastName: "",
-      title: "",
+      country: "",
       email: "",
-      role: "",
+      phone: "",
     });
   }
 
   function addUser(event) {
     event.preventDefault();
     let userId = users.length + 1;
-    const { firstName, lastName, title, email, role, id } = form;
+    const { firstName, lastName, country, email, phone, id } = form;
     const newObj = {
       firstName: firstName,
       lastName: lastName,
-      title: title,
+      country: country,
       email: email,
-      role: role,
+      phone: phone,
       id: userId,
     };
     setUser([...users, newObj]);
@@ -73,9 +73,9 @@ function App() {
           id: form.id,
           firstName: form.firstName,
           lastName: form.lastName,
-          title: form.title,
+          country: form.country,
           email: form.email,
-          role: form.role,
+          phone: form.phone,
         };
       } else {
         return user;
@@ -89,13 +89,13 @@ function App() {
   function updateForm(event) {
     const input = event.target.value;
     const name = event.target.name;
-    const { firstName, lastName, email, title, role, id } = form;
+    const { firstName, lastName, email, country, phone, id } = form;
     const newObj = {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      title: title,
-      role: role,
+      country: country,
+      phone: phone,
       id: id,
     };
     newObj[name] = input;
@@ -122,6 +122,7 @@ function App() {
   useEffect(() => {
     setTotalPage(Math.ceil(users.length / itemsPerPage));
   }, [users]);
+
   return (
     <div className="mt-[100px]">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -129,8 +130,7 @@ function App() {
           <div className="sm:flex-auto">
             <h1 className="text-xl font-semibold text-gray-900">Users</h1>
             <p className="mt-2 text-sm text-gray-700">
-              A list of all the users including their name, title, email and
-              role.
+              A list of all the user's personal information
             </p>
           </div>
           <div className="flex justify-between">
@@ -152,39 +152,30 @@ function App() {
           </div>
         </div>
         <div className="mt-8 flex flex-col w-3/2">
-          <div className="-my-2 -mx-4 sm:mx-auto lg:mx-auto w-10/12 ">
-            <div className="inline-block min-w-full py-2 align-middle">
-              <div className="shadow-sm ring-1 ring-black ring-opacity-5">
-                <table className="min-w-full border-separate">
-                  <thead className="bg-gray-500">
+          <div className="-my-2 -mx-4 sm:mx-auto lg:mx-auto w-10/12  ">
+            <div className="inline-block min-w-full py-2 align-middle ">
+              <div className="overflow-x-auto">
+                <table className="min-w-full border-separate ">
+                  <thead className="bg-slate-300">
                     <tr>
-                      <th
-                        scope="col"
-                        className="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
-                      >
+                      <th className="sticky w-1/12 top-0 z-10 text-center border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 sm:table-cell">
+                        ID
+                      </th>
+                      <th className="sticky w-2/12 top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 px-3 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:table-cell">
                         Name
                       </th>
-                      <th
-                        scope="col"
-                        className="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell"
-                      >
-                        Title
-                      </th>
-                      <th
-                        scope="col"
-                        className="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
-                      >
+                      <th className="sticky w-3/12 top-0 z-10  border-b border-gray-300 bg-gray-50 bg-opacity-75 pl-4 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell">
                         Email
                       </th>
-                      <th
-                        scope="col"
-                        className="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
-                      >
-                        Role
+                      <th className="sticky w-2/12 top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:table-cell">
+                        Phone
                       </th>
+                      <th className="sticky w-2/12 top-0 z-10  border-b border-gray-300 bg-gray-50 bg-opacity-75 pl-4 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell">
+                        Country
+                      </th>
+
                       <th
                         onClick={() => {}}
-                        scope="col"
                         className="sticky top-0 z-10 border-b border-gray-300  bg-gray-50 bg-opacity-75 px-3 py-3.5 text-sm text-center font-semibold text-gray-900 backdrop-blur backdrop-filter"
                       >
                         Action
@@ -192,80 +183,99 @@ function App() {
                     </tr>
                   </thead>
                   <TransitionGroup component="tbody" className="bg-white">
-                    {users.length < 1 ? (
+                    {users.length < 1 && (
                       <tr>
-                        <td className="whitespace-nowrap border-b border-gray-200 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">
+                        <td className="whitespace-nowrap border-b border-gray-200 pl-4 py-4 text-sm text-center font-medium text-gray-900">
                           Empty
                         </td>
+                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 lg:pl-6">
+                          Empty
+                        </td>
+                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden lg:table-cell">
+                          Empty
+                        </td>
+                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden lg:pl-6 sm:table-cell">
+                          Empty
+                        </td>
+                        <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden sm:table-cell">
+                          Empty
+                        </td>
+                        <td className="relative whitespace-nowrap border-b border-gray-200 py-4 pr-4 pl-3 text-center text-sm font-medium sm:pr-6 lg:pr-8">
+                          N/A
+                        </td>
                       </tr>
-                    ) : (
-                      users
-                        .filter(
-                          (item, key) =>
-                            key >= (currentPage - 1) * itemsPerPage &&
-                            key <= itemsPerPage * currentPage - 1
-                        )
-                        .map((user, key) => (
-                          <CSSTransition
-                            key={user.id}
-                            in="true"
-                            classNames="slide-vertical"
-                            timeout={300}
-                          >
-                            <tr>
-                              <td className="whitespace-nowrap border-b border-gray-200 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">
-                                {user.firstName} {user.lastName}
-                              </td>
-                              <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 hidden sm:table-cell">
-                                {user.title}
-                              </td>
-                              <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 hidden lg:table-cell">
-                                {user.email}
-                              </td>
-                              <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500">
-                                {user.role}
-                              </td>
-                              <td className="relative whitespace-nowrap border-b border-gray-200 py-4 pr-4 pl-3 text-right text-sm font-medium sm:pr-6 lg:pr-8">
-                                <div className="flex justify-center">
-                                  <a
-                                    onClick={() => removeTodo(user.id)}
-                                    className="text-red-700 hover:text-red-800"
-                                  >
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 24 24"
-                                      fill="currentColor"
-                                      className="w-5 h-5"
-                                    >
-                                      <path
-                                        fillRule="evenodd"
-                                        d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
-                                        clipRule="evenodd"
-                                      />
-                                    </svg>
-                                  </a>
-                                  <a
-                                    onClick={() => {
-                                      editModal(user);
-                                    }}
-                                    className="text-indigo-600 hover:text-indigo-900"
-                                  >
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 24 24"
-                                      fill="currentColor"
-                                      className="w-5 h-5"
-                                    >
-                                      <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                      <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                    </svg>
-                                  </a>
-                                </div>
-                              </td>
-                            </tr>
-                          </CSSTransition>
-                        ))
                     )}
+
+                    {users
+                      .filter(
+                        (item, key) =>
+                          key >= (currentPage - 1) * itemsPerPage &&
+                          key <= itemsPerPage * currentPage - 1
+                      )
+                      .map((user, key) => (
+                        <CSSTransition
+                          key={user.id}
+                          in="true"
+                          classNames="slide-vertical"
+                          timeout={300}
+                        >
+                          <tr>
+                            <td className="whitespace-nowrap border-b border-gray-200 pl-4 py-4 text-sm text-center font-medium text-gray-900">
+                              {user.id}
+                            </td>
+                            <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 lg:pl-6">
+                              {user.firstName} {user.lastName}
+                            </td>
+                            <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden lg:table-cell">
+                              {user.email}
+                            </td>
+                            <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden lg:pl-6 sm:table-cell">
+                              {user.phone}
+                            </td>
+                            <td className="whitespace-nowrap border-b border-gray-200 px-3 py-4 pl-4 text-sm font-medium text-gray-900 hidden sm:table-cell">
+                              {user.country}
+                            </td>
+
+                            <td className="relative whitespace-nowrap border-b border-gray-200 py-4 pr-4 pl-3 text-right text-sm font-medium sm:pr-6 lg:pr-8">
+                              <div className="flex justify-center">
+                                <a
+                                  onClick={() => removeTodo(user.id)}
+                                  className="text-red-700 hover:text-red-800"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="w-5 h-5"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                </a>
+                                <a
+                                  onClick={() => {
+                                    editModal(user);
+                                  }}
+                                  className="text-indigo-600 hover:text-indigo-900"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="w-5 h-5"
+                                  >
+                                    <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+                                    <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+                                  </svg>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </CSSTransition>
+                      ))}
                   </TransitionGroup>
                 </table>
               </div>
@@ -287,12 +297,7 @@ function App() {
         classNames="Transition"
         unmountOnExit
       >
-        <div
-          className={`relative z-10 ${showModal ? "" : "hidden"}`}
-          aria-labelledby="modal-title"
-          role="dialog"
-          aria-modal="true"
-        >
+        <div className={`relative z-10 ${showModal ? "" : "hidden"}`}>
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -309,7 +314,7 @@ function App() {
                         </div>
                         <div className="mt-5 md:col-span-2 md:mt-0">
                           <div className="grid grid-cols-8 gap-6">
-                            <div className="col-span-8 ">
+                            <div className="col-span-4 ">
                               <label
                                 htmlFor="first-name"
                                 className="block text-sm font-medium text-gray-700"
@@ -324,11 +329,11 @@ function App() {
                                 id="first-name"
                                 required
                                 autoComplete="given-name"
-                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                className="ring-1 ring-slate-200 mt-1 px-2 block w-full h-8 rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
 
-                            <div className="col-span-8 ">
+                            <div className="col-span-4 ">
                               <label
                                 htmlFor="last-name"
                                 className="block text-sm font-medium text-gray-700"
@@ -343,7 +348,7 @@ function App() {
                                 id="last-name"
                                 required
                                 autoComplete="family-name"
-                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                className="ring-1 ring-slate-200 mt-1 block w-full px-2 h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
 
@@ -362,47 +367,44 @@ function App() {
                                 id="email-address"
                                 required
                                 autoComplete="email"
-                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                className="ring-1 ring-slate-200 mt-1 block w-full px-2 h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
                             <div className="col-span-4 ">
                               <label
-                                htmlFor="title"
+                                htmlFor="country"
                                 className="block text-sm font-medium text-gray-700"
                               >
-                                Title
+                                Country
                               </label>
                               <input
                                 type="text"
                                 onChange={(event) => updateForm(event)}
-                                value={form.title}
-                                name="title"
-                                id="title"
+                                value={form.country}
+                                name="country"
+                                id="country"
                                 required
-                                autoComplete="title"
-                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                autoComplete="country"
+                                className="ring-1 ring-slate-200 mt-1 block w-full px-2 h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
                             <div className="col-span-4">
                               <label
-                                htmlFor="role"
+                                htmlFor="phone"
                                 className="block text-sm font-medium text-gray-700"
                               >
-                                Role
+                                Phone
                               </label>
-                              <select
-                                id="role"
+                              <input
+                                type="tel"
                                 onChange={(event) => updateForm(event)}
-                                value={form.role}
-                                name="role"
+                                value={form.phone}
+                                name="phone"
+                                id="phone"
                                 required
-                                autoComplete="country-name"
-                                className="mt-1 block w-full h-8 rounded-md border border-slate-200 bg-white px-2 py-1 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                              >
-                                <option>Admin</option>
-                                <option>Editor</option>
-                                <option>User</option>
-                              </select>
+                                autoComplete="phone"
+                                className="ring-1 ring-slate-200 mt-1 block w-full px-2 h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                              />
                             </div>
                           </div>
                         </div>
