@@ -120,12 +120,12 @@ function App() {
     );
   }
   //pagination related codes are here
-  const [perPage] = useState(3);
+  const [itemsPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
-    setTotalPage(Math.ceil(users.length / perPage));
+    setTotalPage(Math.ceil(users.length / itemsPerPage));
   }, [users]);
   return (
     <div className="mt-[100px]">
@@ -138,7 +138,7 @@ function App() {
               role.
             </p>
           </div>
-          <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+          <div className="flex justify-between">
             <button
               type="button"
               onClick={() => setShowModal(true)}
@@ -199,8 +199,8 @@ function App() {
                       users
                         .filter(
                           (item, key) =>
-                            key >= (currentPage - 1) * perPage &&
-                            key <= perPage * currentPage - 1
+                            key >= (currentPage - 1) * itemsPerPage &&
+                            key <= itemsPerPage * currentPage - 1
                         )
                         .map((user, key) => (
                           <CSSTransition
@@ -273,7 +273,7 @@ function App() {
 
       <Pagination
         currentPage={currentPage}
-        perPage={perPage}
+        itemsPerPage={itemsPerPage}
         totalPage={totalPage}
         setCurrentPage={setCurrentPage}
         users={users}

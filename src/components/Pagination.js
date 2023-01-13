@@ -2,7 +2,7 @@ import React from "react";
 
 const Pagination = ({
   currentPage,
-  perPage,
+  itemsPerPage,
   totalPage,
   setCurrentPage,
   users,
@@ -17,6 +17,8 @@ const Pagination = ({
       setCurrentPage((e) => e - 1);
     }
   }
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage - 1, users.length - 1);
   return (
     <div>
       <nav
@@ -27,7 +29,7 @@ const Pagination = ({
           <p className="text-md text-gray-700">
             Showing
             <span className="font-medium text-blue-600">
-              &nbsp;{users.length / totalPage}
+              &nbsp;{(endIndex-startIndex)+1}
             </span>
             <span className="">
               &nbsp;out of&nbsp;
