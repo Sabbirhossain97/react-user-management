@@ -17,19 +17,11 @@ function App() {
   const [users, setUser] = useState([
     {
       id: 1,
-      firstName: "Sakib",
-      lastName: "Hossain",
-      title: "Full Stack Developer",
-      email: "sakibwebworm85@gmail.com",
-      role: "Admin",
-    },
-    {
-      id: 2,
-      firstName: "Sabbir",
-      lastName: "Hossain",
-      title: "Web Developer",
-      email: "sabbirshawon1994@gmail.com",
-      role: "Editor",
+      firstName: "John",
+      lastName: "Doe",
+      title: "Unknown",
+      email: "johndoe123@gmail.com",
+      role: "N/A",
     },
   ]);
 
@@ -119,8 +111,11 @@ function App() {
         })
     );
   }
+  function limitHandler(e) {
+    setItemsPerPage(e.target.value);
+  }
   //pagination related codes are here
-  const [itemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
 
@@ -139,6 +134,14 @@ function App() {
             </p>
           </div>
           <div className="flex justify-between">
+            <div className="ml-8">
+              <label className="bold font-medium">Users limit / page :</label>
+              <input
+                type="number"
+                className="ring-1 rounded-md border-indigo-600 px-2 py-2 font-medium text-sm w-2/5 ml-2"
+                onChange={(e) => limitHandler(e)}
+              />
+            </div>
             <button
               type="button"
               onClick={() => setShowModal(true)}
@@ -294,10 +297,10 @@ function App() {
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+              <div className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-4 pb-4 text-left shadow-xl transition-all ">
                 <div>
                   <form className="space-y-6" onSubmit={addUser}>
-                    <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                    <div className="bg-white px-2 py-2  sm:rounded-lg sm:p-6">
                       <div>
                         <div>
                           <h3 className="text-lg mb-8 font-medium leading-6 text-gray-900">
@@ -305,8 +308,8 @@ function App() {
                           </h3>
                         </div>
                         <div className="mt-5 md:col-span-2 md:mt-0">
-                          <div className="grid grid-cols-6 gap-6">
-                            <div className="col-span-6 sm:col-span-3">
+                          <div className="grid grid-cols-8 gap-6">
+                            <div className="col-span-8 ">
                               <label
                                 htmlFor="first-name"
                                 className="block text-sm font-medium text-gray-700"
@@ -321,11 +324,11 @@ function App() {
                                 id="first-name"
                                 required
                                 autoComplete="given-name"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
 
-                            <div className="col-span-6 sm:col-span-3">
+                            <div className="col-span-8 ">
                               <label
                                 htmlFor="last-name"
                                 className="block text-sm font-medium text-gray-700"
@@ -340,11 +343,11 @@ function App() {
                                 id="last-name"
                                 required
                                 autoComplete="family-name"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
 
-                            <div className="col-span-6 sm:col-span-4">
+                            <div className="col-span-8">
                               <label
                                 htmlFor="email-address"
                                 className="block text-sm font-medium text-gray-700"
@@ -359,10 +362,10 @@ function App() {
                                 id="email-address"
                                 required
                                 autoComplete="email"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
-                            <div className="col-span-6 sm:col-span-4">
+                            <div className="col-span-4 ">
                               <label
                                 htmlFor="title"
                                 className="block text-sm font-medium text-gray-700"
@@ -377,10 +380,10 @@ function App() {
                                 id="title"
                                 required
                                 autoComplete="title"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                className="ring-1 ring-slate-200 mt-1 block w-full h-8 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
-                            <div className="col-span-6 sm:col-span-3">
+                            <div className="col-span-4">
                               <label
                                 htmlFor="role"
                                 className="block text-sm font-medium text-gray-700"
@@ -394,7 +397,7 @@ function App() {
                                 name="role"
                                 required
                                 autoComplete="country-name"
-                                className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                className="mt-1 block w-full h-8 rounded-md border border-slate-200 bg-white px-2 py-1 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                               >
                                 <option>Admin</option>
                                 <option>Editor</option>

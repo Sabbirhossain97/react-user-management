@@ -17,6 +17,7 @@ const Pagination = ({
       setCurrentPage((e) => e - 1);
     }
   }
+  //for total items showing in current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = Math.min(startIndex + itemsPerPage - 1, users.length - 1);
   return (
@@ -29,7 +30,7 @@ const Pagination = ({
           <p className="text-md text-gray-700">
             Showing
             <span className="font-medium text-blue-600">
-              &nbsp;{(endIndex-startIndex)+1}
+              &nbsp;{endIndex - startIndex + 1}
             </span>
             <span className="">
               &nbsp;out of&nbsp;
@@ -43,7 +44,7 @@ const Pagination = ({
             onClick={() => previousPage()}
             className={`${
               currentPage === 1
-                ? "bg-gray-300 pointer-events-none text-gray-400"
+                ? "bg-gray-300 cursor-not-allowed text-gray-400"
                 : ""
             } relativeinline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
           >
@@ -53,7 +54,7 @@ const Pagination = ({
             onClick={() => nextPage()}
             className={`${
               currentPage === totalPage
-                ? "bg-gray-300 pointer-events-none text-gray-400"
+                ? "bg-gray-300 cursor-not-allowed text-gray-400"
                 : ""
             } relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
           >
