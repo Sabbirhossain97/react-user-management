@@ -10,7 +10,7 @@ const Pagination = ({
 }) => {
   useEffect(() => {
     setTotalPage(Math.ceil(users.length / itemsPerPage));
-  }, [itemsPerPage,users.length]);
+  }, [itemsPerPage, users.length]);
 
   let paginationArray = [];
   for (let i = 1; i <= totalPage; i++) {
@@ -60,17 +60,19 @@ const Pagination = ({
             Previous
           </button>
           {paginationArray.map((item, key) => (
-            <div key={key} className="h-[4px]">
-              <p
-                className={`${
-                  currentPage === item
-                    ? "bg-blue-600 text-white px-4 py-2 text-center font-medium rounded-md cursor-pointer mr-2"
-                    : "px-4 py-2 font-medium text-blue-600 border border-gray-200 rounded-md cursor-pointer mr-2 hover:bg-blue-600 hover:text-white"
-                }`}
-              >
-                {item}
-              </p>
-            </div>
+            <p
+              key={key}
+              onClick={() => {
+                setCurrentPage(item);
+              }}
+              className={`${
+                currentPage === item
+                  ? "bg-blue-600 text-white px-4 py-2 text-center font-medium rounded-md cursor-pointer mr-2"
+                  : "px-4 py-2 font-medium text-blue-600 border border-gray-200 rounded-md cursor-pointer mr-2 hover:bg-blue-600 hover:text-white"
+              }`}
+            >
+              {item}
+            </p>
           ))}
           <button
             onClick={() => nextPage()}
