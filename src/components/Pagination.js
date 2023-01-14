@@ -6,12 +6,17 @@ const Pagination = ({
   totalPage,
   setCurrentPage,
   users,
+  setTotalPage,
 }) => {
+  useEffect(() => {
+    setTotalPage(Math.ceil(users.length / itemsPerPage));
+  }, [itemsPerPage,users.length]);
+
   let paginationArray = [];
   for (let i = 1; i <= totalPage; i++) {
     paginationArray.push(i);
-    console.log(paginationArray);
   }
+
   function nextPage() {
     if (currentPage !== totalPage) {
       setCurrentPage((e) => e + 1);
@@ -23,21 +28,18 @@ const Pagination = ({
     }
   }
   //for total items showing in current page
- 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage - 1, users.length - 1);
- 
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage - 1, users.length - 1);
+
   return (
     <div>
-      <nav
-        className="flex items-cente bg-white px-4 py-3 sm:px-6 w-10/12 mx-auto"
-        aria-label="Pagination"
-      >
+      <nav className="flex items-cente bg-white px-4 py-3 sm:px-6 w-10/12 mx-auto">
         <div className="sm:block lg:flex items-center">
           <p className="text-md text-gray-700">
             Showing
             <span className="font-medium text-blue-600">
-              &nbsp;{(endIndex - startIndex) + 1}
+              &nbsp;{endIndex - startIndex + 1}
             </span>
             <span>
               &nbsp;out of&nbsp;
@@ -57,16 +59,9 @@ const Pagination = ({
           >
             Previous
           </button>
-          {paginationArray.map((item) => (
-            <div className="h-[4px]">
+          {paginationArray.map((item, key) => (
+            <div key={key} className="h-[4px]">
               <p
-                onClick={() =>
-                  item > item - 1
-                    ? nextPage()
-                    : item < item + 1
-                    ? previousPage()
-                    : ""
-                }
                 className={`${
                   currentPage === item
                     ? "bg-blue-600 text-white px-4 py-2 text-center font-medium rounded-md cursor-pointer mr-2"

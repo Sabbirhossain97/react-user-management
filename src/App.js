@@ -112,16 +112,17 @@ function App() {
     );
   }
   function limitHandler(e) {
-    setItemsPerPage(e.target.value);
+    const limit = Number(e.target.value);
+    if (limit == 0) {
+      return;
+    } else {
+      setItemsPerPage(limit);
+    }
   }
   //pagination related codes are here
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
-
-  useEffect(() => {
-    setTotalPage(Math.ceil(users.length / itemsPerPage));
-  }, [users]);
+  const [totalPage, setTotalPage] = useState(1);
 
   return (
     <div className="mt-[100px]">
@@ -138,6 +139,7 @@ function App() {
               <label className="bold font-medium">Users limit / page :</label>
               <input
                 type="number"
+                min="0"
                 className="ring-1 rounded-md border-indigo-600 px-2 py-2 font-medium text-sm w-2/12 ml-4"
                 onChange={(e) => limitHandler(e)}
               />
@@ -180,8 +182,6 @@ function App() {
                     </tr>
                   </thead>
                   <TransitionGroup component="tbody" className="bg-white">
-                   
-
                     {users
                       .filter(
                         (item, key) =>
@@ -191,7 +191,7 @@ function App() {
                       .map((user, key) => (
                         <CSSTransition
                           key={user.id}
-                          in="true"
+                          in={user.length >0 ? true: false }
                           classNames="slide-vertical"
                           timeout={300}
                         >
@@ -266,6 +266,7 @@ function App() {
         totalPage={totalPage}
         setCurrentPage={setCurrentPage}
         users={users}
+        setTotalPage={setTotalPage}
       />
       <CSSTransition
         in={showModal}
