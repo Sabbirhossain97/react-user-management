@@ -135,8 +135,8 @@ function App() {
             </p>
           </div>
           <div className="flex ">
-            <div className="inline ml-4">
-              <label className="bold font-medium">Users limit / page :</label>
+            <div className="ml-4 flex justify-center">
+              <label className="bold font-medium mt-[5px]">Users limit / page :</label>
               <input
                 type="number"
                 min="0"
