@@ -201,7 +201,7 @@ function App() {
                           <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 lg:pl-6">
                             {user.firstName} {user.lastName}
                           </td>
-                          <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 hidden lg:table-cell">
+                          <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 hidden sm:table-cell lg:table-cell">
                             {user.email}
                           </td>
                           <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 hidden lg:pl-6 sm:table-cell">
