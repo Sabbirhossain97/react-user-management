@@ -31,7 +31,8 @@ const Pagination = ({
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = Math.min(startIndex + itemsPerPage - 1, users.length - 1);
-
+  console.log(currentPage);
+  console.log(totalPage);
   return (
     <div>
       <nav className="flex items-cente bg-white px-4 py-3 sm:px-6 w-10/12 mx-auto">
@@ -53,9 +54,9 @@ const Pagination = ({
             onClick={() => previousPage()}
             className={`${
               currentPage === 1
-                ? "bg-gray-300 cursor-not-allowed text-gray-400"
-                : ""
-            } relativeinline-flex items-center rounded-md border border-gray-300 bg-white mr-4 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
+                ? "bg-white cursor-not-allowed text-gray-400 border border-gray-300 hover:bg-gray-50"
+                : "bg-white text-blue-500 border border-blue-500 hover:bg-blue-50"
+            } relative inline-flex items-center rounded-md border border-gray-300 bg-white mr-4 px-4 py-2 text-sm font-medium text-blue-600 hover:bg-gray-50`}
           >
             Previous
           </button>
@@ -67,8 +68,8 @@ const Pagination = ({
               }}
               className={`${
                 currentPage === item
-                  ? "bg-blue-600 text-white px-4 py-2 text-center font-medium rounded-md cursor-pointer mr-2"
-                  : "px-4 py-2 font-medium text-blue-600 border border-gray-200 rounded-md cursor-pointer mr-2 hover:bg-blue-600 hover:text-white"
+                  ? "border border-blue-500 text-blue-500 px-4 py-2 text-center font-medium rounded-md cursor-pointer mr-2"
+                  : "px-4 py-2 font-medium text-gray-600 border border-gray-200 rounded-md cursor-pointer mr-2 hover:border-blue-500 hover:text-blue-500"
               }`}
             >
               {item}
@@ -77,9 +78,9 @@ const Pagination = ({
           <button
             onClick={() => nextPage()}
             className={`${
-              currentPage === totalPage
-                ? "bg-gray-300 cursor-not-allowed text-gray-400"
-                : ""
+              currentPage === totalPage || users.length === 0
+                ? "bg-white cursor-not-allowed text-gray-400 border border-gray-300"
+                : "bg-white text-blue-500 border border-blue-500 hover:bg-blue-50"
             } relative ml-2 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
           >
             Next

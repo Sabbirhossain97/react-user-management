@@ -134,9 +134,14 @@ function App() {
               A list of all the user's personal information
             </p>
           </div>
-          <div className="flex ">
+          <div className="flex flex-row ">
             <div className="ml-4 flex justify-center">
-              <label className="bold font-medium mt-[5px]">Users limit / page :</label>
+              {/* search */}
+              
+              {/* search */}
+              <label className="bold font-medium mt-[5px]">
+                Users per page :
+              </label>
               <input
                 type="number"
                 min="0"
@@ -147,35 +152,35 @@ function App() {
             <button
               type="button"
               onClick={() => setShowModal(true)}
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+              className="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
             >
               Add user
             </button>
           </div>
         </div>
-        <div className="mt-8 flex flex-col w-3/2">
-          <div className="-my-2 -mx-4 sm:mx-auto lg:mx-auto w-10/12  ">
+        <div className="mt-4 flex flex-col w-3/2 rounded-md">
+          <div className="sm:mx-auto lg:mx-auto w-10/12  ">
             <div className="inline-block min-w-full align-middle ">
-              <table className="min-w-full border-separate ">
-                <thead className="bg-slate-300">
+              <table className="min-w-full border-separate  ">
+                <thead className="rounded-md border">
                   <tr>
-                    <th className="sticky w-1/12 top-0 z-10 text-center border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 sm:table-cell">
+                    <th className=" w-1/12 top-0 z-10 text-center border border-transparent bg-slate-800 bg-opacity-75 py-3.5 pl-4 pr-3 text-sm font-semibold text-white sm:pl-6 sm:table-cell">
                       ID
                     </th>
-                    <th className="sticky w-2/12 top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 px-3 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:table-cell">
+                    <th className="sticky w-2/12 top-0 z-10 border border-transparent bg-slate-800 bg-opacity-75 py-3.5 px-3 pl-4 pr-3 text-left text-sm font-semibold text-white backdrop-blur backdrop-filter sm:pl-6 lg:table-cell">
                       Name
                     </th>
-                    <th className="sticky w-3/12 top-0 z-10  border-b border-gray-300 bg-gray-50 bg-opacity-75 pl-4 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell">
+                    <th className="sticky w-3/12 top-0 z-10  border border-transparent bg-slate-800 bg-opacity-75 pl-4 px-3 py-3.5 text-left text-sm font-semibold text-white backdrop-blur backdrop-filter lg:table-cell">
                       Email
                     </th>
-                    <th className="sticky w-2/12 top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:table-cell">
+                    <th className="sticky w-2/12 top-0 z-10 border border-transparent bg-slate-800 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white backdrop-blur backdrop-filter sm:pl-6 lg:table-cell">
                       Phone
                     </th>
-                    <th className="sticky w-2/12 top-0 z-10  border-b border-gray-300 bg-gray-50 bg-opacity-75 pl-4 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell">
+                    <th className="sticky w-2/12 top-0 z-10  border border-transparent bg-slate-800 bg-opacity-75 pl-4 px-3 py-3.5 text-left text-sm font-semibold text-white backdrop-blur backdrop-filter sm:table-cell">
                       Country
                     </th>
 
-                    <th className="sticky top-0 z-10 border-b border-gray-300  bg-gray-50 bg-opacity-75 px-3 py-3.5 text-sm text-center font-semibold text-gray-900 backdrop-blur backdrop-filter">
+                    <th className="sticky top-0 z-10 border border-transparent bg-slate-800 bg-opacity-75 px-3 py-3.5 text-sm text-center font-semibold text-white backdrop-blur backdrop-filter">
                       Action
                     </th>
                   </tr>
@@ -199,16 +204,18 @@ function App() {
                             {user.id}
                           </td>
                           <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 lg:pl-6">
-                            {user.firstName} {user.lastName}
+                            {user.firstName || user.lastName
+                              ? `${user.firstName + " " + user.lastName}`
+                              : `Empty`}
                           </td>
                           <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 hidden sm:table-cell lg:table-cell">
-                            {user.email}
+                            {user.email ? `${user.email}` : "Empty"}
                           </td>
                           <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 hidden lg:pl-6 sm:table-cell">
-                            {user.phone}
+                            {user.phone ? `${user.phone}` : "Empty"}
                           </td>
                           <td className="whitespace-nowrap border-b border-gray-200 px-3 pl-4 text-sm font-medium text-gray-900 hidden sm:table-cell">
-                            {user.country}
+                            {user.country ? `${user.country}` : "Empty"}
                           </td>
 
                           <td className="relative whitespace-nowrap border-b border-gray-200 py-4 pr-4 pl-3 text-right text-sm font-medium sm:pr-6 lg:pr-8">
