@@ -1,8 +1,5 @@
 # ReactJS | User Management App
 
-A website to showcase full CRUD implementation using pure javascript.
-
-<<<<<<< HEAD
 ## Features
 
 1. Full CRUD Implementation
