@@ -1,39 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.Transition-enter {
-  opacity: 0;
+
+
+.ant-btn-primary{
+    background-color: #1677ff !important;
 }
 
-.Transition-enter-active {
-  opacity: 1;
-  transition: all 300ms;
-}
-
-.Transition-exit {
-  opacity: 1;
-  transition: all 300ms;
-}
-
-.Transition-exit-active {
-  opacity: 0;
-  transition: all 500ms;
-}
-.slide-enter {
-  opacity: 0;
-  transform: translateX(50%);
-}
-.slide-enter-active {
-  opacity: 1;
-  transform: translateX(0%);
-  transition: transform 300ms ease-in-out;
-}
-.slide-exit {
-  opacity: 1;
-  transform: translateX(0%);
-}
-.slide-exit-active {
-  opacity: 0;
-  transform: translateX(-50%);
-  transition: transform 300ms ease-in-out;
+.ant-btn-primary:hover{
+    background-color: #2a72d6 !important;
 }
