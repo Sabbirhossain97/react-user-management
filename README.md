@@ -1,4 +1,4 @@
-# ReactJS | CRUD App
+# ReactJS | User Management App
 
 A website to showcase full CRUD implementation using pure javascript.
 
